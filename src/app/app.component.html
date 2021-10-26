@@ -1,22 +1,18 @@
 <div class="mt-5 d-flex align-center justify-content-center w-100 text-center">
-  <form>
+  <form (submit)="onSubmit()">
     <img class="mb-4" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">TODO List</h1>
-    <div class="form-floating">
-      <input type="text" class="form-control" id="something-to-do" placeholder="something to do">
-      <label for="something-to-do">Something to do</label>
+    <div *ngFor="let todo of form.controls; let i = index" class="input-group mb-3">
+      <div class="input-group-text">
+        <input [formControl]="getControl(todo, 'finished')" class="form-check-input mt-0" type="checkbox" value="finished" aria-label="Finished">
+      </div>
+      <input [formControl]="getControl(todo, 'label')"  type="text" class="form-control" id="something-to-do" placeholder="Something to do" aria-label="Something to do">
+      <span class="input-group-text">-</span>
+      <input  [formControl]="getControl(todo, 'at')"type="date" class="form-control" id="something-at" placeholder="Date to do" aria-label="Date to do">
+      <button (click)="supprTodo(i)" class="btn btn-danger" type="button">X</button>
     </div>
-    <div class="form-floating">
-      <input type="date" class="form-control" id="something-at" placeholder="01/01/2021">
-      <label for="something-at">Date to do</label>
-    </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="finished"> Finished
-      </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Add TODO</button>
+    <button (click)="addTodo()" class="w-100 btn btn-lg btn-primary" type="button">Add TODO</button>
+    <button class="w-100 btn btn-lg btn-success mt-3" type="submit">Save TODO</button>
   </form>
 </div>
 
