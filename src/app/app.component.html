@@ -10,6 +10,7 @@
       <span class="input-group-text">-</span>
       <input  [formControl]="getControl(todo, 'at')"type="date" class="form-control" id="something-at" placeholder="Date to do" aria-label="Date to do">
       <button (click)="supprTodo(i)" class="btn btn-danger" type="button">X</button>
+      <button (click)="saveTodo(todo)" class="btn btn-success" type="button">S</button>
     </div>
     <button (click)="addTodo()" class="w-100 btn btn-lg btn-primary" type="button">Add TODO</button>
     <button class="w-100 btn btn-lg btn-success mt-3" type="submit">Save TODO</button>
